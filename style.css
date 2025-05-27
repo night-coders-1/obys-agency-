@@ -1,0 +1,143 @@
+/* Font Faces */
+@font-face {
+  font-family: pl;
+  src: url(plain-light-webfont.ttf);
+}
+@font-face {
+  font-family: pr;
+  src: url(plain-regular-webfont.ttf);
+}
+@font-face {
+  font-family: silk serif lgt;
+  src: url(silkserif-lightitalic-webfont.ttf);
+}
+@font-face {
+  font-family: silk serif reg;
+  src: url(silkserif-regularitalic-webfont.ttf);
+}
+
+/* Reset + Base */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  color: white;
+}
+html,
+body {
+  width: 100%;
+  height: 100%;
+  background: #0c0c0c;
+  font-family: pr;
+  overflow: hidden; /* Prevent scroll when loader is visible */
+}
+
+/* Loader Layout */
+#loader {
+  width: 100%;
+  height: 100vh;
+  background: #0c0c0c;
+  padding: 16.2vh 5vw 0 5vw;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  z-index: 999;
+}
+
+/* First Line Layout */
+#line1 {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  position: relative;
+}
+
+.numbers {
+  display: flex;
+  flex-direction: row;
+  gap: 0.5vw;
+  font-size: 3vw;
+  font-family: "silk serif lgt";
+  padding-left: 7.8vw;
+  margin-top: 0.3vh;
+}
+
+.main-text {
+  font-size: 6.8vw;
+  text-transform: uppercase;
+  font-family: pl;
+  font-weight: 500;
+  line-height: 1;
+}
+
+#line1 h1 {
+  padding-right: 50vw;
+}
+
+.faded {
+  position: relative;
+  font-family: "pr";
+  font-style: normal;
+  opacity: 1;
+  animation: anime 5s infinite ease-in-out;
+}
+@keyframes anime {
+  0% {
+    font-family: "pr";
+    font-style: normal;
+    opacity: 1;
+    color: white;
+  }
+
+  48% {
+    font-family: "pr";
+    font-style: normal;
+    opacity: 0;
+    color: white;
+  }
+
+  50% {
+    font-family: "silk serif reg";
+    font-style: italic;
+    -webkit-text-stroke: 0.3px white;
+    color: transparent;
+    opacity: 1;
+  }
+
+  100% {
+    font-family: "silk serif reg";
+    font-style: italic;
+    -webkit-text-stroke: 0.3px white;
+    color: transparent;
+    opacity: 0;
+  }
+}
+
+.line {
+  overflow: hidden;
+}
+
+/* Wait Message */
+#wait-message {
+  font-size: 1vw;
+  line-height: 1.5;
+  font-family: pr;
+  position: absolute;
+  bottom: 20vh;
+  left: 28vw;
+  max-width: 140px;
+  opacity: 0;
+  transition: opacity 0.5s ease-in;
+}
+
+/* Main content */
+#main-content {
+  width: 100%;
+  height: 100vh;
+  background: #0c0c0c;
+}
+#page1 {
+  background-color: #151515;
+  width: 100%;
+  height: 100vh;
+}

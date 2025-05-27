@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Precise Loader</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div id="loader">
+      <!-- First Line: Numbers + 'Your' -->
+      <div class="line" id="line1">
+        <div class="numbers">
+          <p id="timer">0</p>
+          <p>- 100</p>
+        </div>
+        <h1 class="main-text">Your</h1>
+      </div>
+
+      <!-- Second Line -->
+      <div class="line">
+        <h1 class="main-text">Web Experience</h1>
+      </div>
+
+      <!-- Third Line -->
+      <div class="line">
+        <h1 class="main-text">
+          Is Loading Right <span class="faded">Now</span>
+        </h1>
+      </div>
+
+      <!-- Wait Message -->
+      <div id="wait-message">
+        <p>Please wait<br />a few seconds.</p>
+      </div>
+    </div>
+
+    <div id="main-content">
+      <div id="page1"></div>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.13.0/gsap.min.js"></script>
+    <script src="script.js"></script>
+  </body>
+</html>
