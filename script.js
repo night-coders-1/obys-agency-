@@ -1,3 +1,44 @@
+function scroll() {
+  gsap.registerPlugin(ScrollTrigger);
+
+  // Using Locomotive Scroll from Locomotive https://github.com/locomotivemtl/locomotive-scroll
+
+  const locoScroll = new LocomotiveScroll({
+    el: document.querySelector("#main-content"),
+    smooth: true,
+  });
+  // each time Locomotive Scroll updates, tell ScrollTrigger to update too (sync positioning)
+  locoScroll.on("scroll", ScrollTrigger.update);
+
+  // tell ScrollTrigger to use these proxy methods for the "#main-content" element since Locomotive Scroll is hijacking things
+  ScrollTrigger.scrollerProxy("#main-content", {
+    scrollTop(value) {
+      return arguments.length
+        ? locoScroll.scrollTo(value, 0, 0)
+        : locoScroll.scroll.instance.scroll.y;
+    }, // we don't have to define a scrollLeft because we're only scrolling vertically.
+    getBoundingClientRect() {
+      return {
+        top: 0,
+        left: 0,
+        width: window.innerWidth,
+        height: window.innerHeight,
+      };
+    },
+    // LocomotiveScroll handles things completely differently on mobile devices - it doesn't even transform the container at all! So to get the correct behavior and avoid jitters, we should pin things with position: fixed on mobile. We sense it by checking to see if there's a transform applied to the container (the LocomotiveScroll-controlled element).
+    pinType: document.querySelector("#main-content").style.transform
+      ? "transform"
+      : "fixed",
+  });
+
+  // each time the window updates, we should refresh ScrollTrigger and then update LocomotiveScroll.
+  ScrollTrigger.addEventListener("refresh", () => locoScroll.update());
+
+  // after everything is set up, refresh() ScrollTrigger and update LocomotiveScroll because padding may have been added for pinning, etc.
+  ScrollTrigger.refresh();
+}
+scroll();
+
 // todo loader page
 function loader() {
   // Animate loading text lines
@@ -32,8 +73,8 @@ function loader() {
       onComplete: () => {
         document.getElementById("loader").style.display = "none";
         document.getElementById("main-content").style.display = "block";
-        document.documentElement.style.overflow = "auto";
-        document.body.style.overflow = "auto";
+        document.documentElement.style.overflow = "hidden"; // Allow scrolling after loader
+        document.body.style.overflow = "visible"; // Allow scrolling after loader
       },
     })
     .to("#loader *", {
