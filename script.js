@@ -126,3 +126,216 @@ gsap.from(".text_01_line h4", {
   duration: 0.7,
   stagger: 0.1,
 });
+
+// todo image hover effect
+
+// Get all target arrows
+const arrows = document.querySelectorAll(
+  "#down_arrow, #rightdown_arrow, #right_arrow"
+);
+
+// Loop through each arrow
+arrows.forEach((arrow) => {
+  const whiteCircle = arrow.querySelector(".white_circle");
+  const circleText = arrow.querySelector(".circle-text");
+
+  // Start hidden
+  gsap.set(whiteCircle, { scale: 0, opacity: 0 });
+  gsap.set(circleText, { scale: 0.9, opacity: 0 });
+
+  // On hover in
+  arrow.addEventListener("mouseenter", () => {
+    gsap.to(whiteCircle, {
+      scale: 1.05,
+      opacity: 1,
+      duration: 0.4,
+      ease: "power3.out",
+    });
+
+    gsap.to(circleText, {
+      scale: 1,
+      opacity: 1,
+      duration: 0.4,
+      delay: 0.05,
+      ease: "power2.out",
+    });
+  });
+
+  // On hover out
+  arrow.addEventListener("mouseleave", () => {
+    gsap.to(whiteCircle, {
+      scale: 0,
+      opacity: 0,
+      duration: 0.3,
+      ease: "power3.in",
+    });
+
+    gsap.to(circleText, {
+      scale: 0.9,
+      opacity: 0,
+      duration: 0.3,
+      ease: "power2.in",
+    });
+  });
+});
+
+// todo all projects animation
+const allProjects = document.getElementById("all_projects");
+
+allProjects.addEventListener("mouseenter", () => {
+  gsap.to(allProjects, {
+    scale: 0.88, // slightly larger
+    duration: 0.4,
+    ease: "power2.out",
+  });
+});
+
+allProjects.addEventListener("mouseleave", () => {
+  gsap.to(allProjects, {
+    scale: 1, // back to normal
+    duration: 0.4,
+    ease: "power2.inOut",
+  });
+});
+
+//todo headline animation
+
+gsap.from(".headline-underline", {
+  x: 1000,
+  scrollTrigger: {
+    trigger: "#page3_headline",
+    scroller: "#main-content",
+    start: "top 80%",
+    end: "top 27%",
+    scrub: true,
+  },
+});
+
+gsap.from(".about-underline", {
+  x: 1000,
+  scrollTrigger: {
+    trigger: "#page8_headline",
+    scroller: "#main-content",
+    start: "top 80%",
+    end: "top 27%",
+    scrub: true,
+  },
+});
+gsap.from(".page9-underline", {
+  x: 1000,
+  scrollTrigger: {
+    trigger: "#page9_line",
+    scroller: "#main-content",
+    start: "top 80%",
+    end: "top 27%",
+    scrub: true,
+  },
+});
+gsap.from(".page11-underline", {
+  x: 1000,
+  scrollTrigger: {
+    trigger: "#page11_headline",
+    scroller: "#main-content",
+    start: "top 80%",
+    end: "top 22%",
+    scrub: true,
+  },
+});
+gsap.from(".page11-lastline", {
+  x: 1000,
+  scrollTrigger: {
+    trigger: "#page11_headline",
+    scroller: "#main-content",
+    start: "top 20%",
+    end: "top 0%",
+    scrub: true,
+  },
+});
+
+const links = document.querySelectorAll("#part1 h5");
+
+links.forEach((link) => {
+  // Customize this width per link if needed
+  const customWidth = link.getAttribute("data-underline-width") || "100%";
+
+  // Create underline element
+  const underline = document.createElement("span");
+  underline.style.position = "absolute";
+  underline.style.bottom = "0";
+  underline.style.left = "0";
+  underline.style.height = "1px";
+  underline.style.background = "white";
+  underline.style.width = "0%";
+  underline.style.transformOrigin = "right";
+  underline.style.pointerEvents = "none";
+
+  // Required for positioning
+  link.style.position = "relative";
+  link.appendChild(underline);
+
+  link.addEventListener("mouseenter", () => {
+    gsap.to(underline, {
+      width: customWidth,
+      duration: 0.4,
+      ease: "power2.out",
+      transformOrigin: "right",
+    });
+  });
+
+  link.addEventListener("mouseleave", () => {
+    gsap.to(underline, {
+      width: "0%",
+      duration: 0.4,
+      ease: "power2.in",
+      transformOrigin: "left",
+    });
+  });
+});
+
+// todo hover
+
+
+// todo gooey animation
+// function gooeyAnimation() {
+//   Shery.imageEffect("#olga", {
+//     style: 5,
+//     config: {
+//       a: { value: 2, range: [0, 30] },
+//       b: { value: 0.75, range: [-1, 1] },
+//       zindex: { value: -9996999, range: [-9999999, 9999999] },
+//       aspect: { value: 0.8081953766802364 },
+//       ignoreShapeAspect: { value: true },
+//       shapePosition: { value: { x: 0, y: 0 } },
+//       shapeScale: { value: { x: 0.5, y: 0.5 } },
+//       shapeEdgeSoftness: { value: 0, range: [0, 0.5] },
+//       shapeRadius: { value: 0, range: [0, 2] },
+//       currentScroll: { value: 0 },
+//       scrollLerp: { value: 0.07 },
+//       gooey: { value: true },
+//       infiniteGooey: { value: false },
+//       growSize: { value: 4, range: [1, 15] },
+//       durationOut: { value: 1, range: [0.1, 5] },
+//       durationIn: { value: 1.5, range: [0.1, 5] },
+//       displaceAmount: { value: 0.5 },
+//       masker: { value: true },
+//       maskVal: { value: 1.31, range: [1, 5] },
+//       scrollType: { value: 0 },
+//       geoVertex: { range: [1, 64], value: 1 },
+//       noEffectGooey: { value: true },
+//       onMouse: { value: 1 },
+//       noise_speed: { value: 0.2, range: [0, 10] },
+//       metaball: { value: 0.34, range: [0, 2] },
+//       discard_threshold: { value: 0.5, range: [0, 1] },
+//       antialias_threshold: { value: 0, range: [0, 0.1] },
+//       noise_height: { value: 0.5, range: [0, 2] },
+//       noise_scale: { value: 10, range: [0, 100] },
+//     },
+//     gooey: true,
+
+//     // effect: "gooey",
+//     // intensity: 0.5,
+//     // duration: 1.5,
+//     ease: "power2.inOut",
+//   });
+// }
+// gooeyAnimation();

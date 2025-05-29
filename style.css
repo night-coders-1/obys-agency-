@@ -33,6 +33,11 @@ body {
   cursor: none; /* Prevent scroll when loader is visible */
 }
 
+._canvas_container {
+  z-index: 9999 !important;
+  pointer-events: none;
+}
+
 #crsr {
   width: 3vw;
   height: 3vw;
@@ -50,7 +55,7 @@ body {
 #loader {
   width: 100%;
   height: 100vh;
-  background: #0c0c0c;
+  background: #0b0b0b;
   padding: 16.2vh 5vw 0 5vw;
   display: flex;
   flex-direction: column;
@@ -153,7 +158,7 @@ body {
   width: 100%;
   /* ! height: 100vh;  this was the main problem */
   min-height: 100vh;
-  background: #0c0c0c;
+  background: #151515;
 }
 #page1 {
   background-color: #151515;
@@ -217,6 +222,7 @@ body {
   text-transform: uppercase;
   margin: 4.7vw 0 0 27.4vw;
   position: relative;
+  z-index: 9;
 }
 .text_01_line {
   overflow: hidden;
@@ -324,9 +330,20 @@ body {
   font-size: 8vw;
   font-family: pl;
   text-transform: uppercase;
-  border-bottom: 1px solid;
+  position: relative;
+  /* border-bottom: 1px solid; */
   padding-bottom: 6.5vw;
+  overflow: hidden;
 }
+.headline-underline {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 2px;
+  background-color: white;
+}
+
 #count02 {
   font-family: "silk serif lgt";
   font-style: italic;
@@ -352,6 +369,7 @@ body {
   width: 35%;
   height: 88%;
   /* background-color: rgba(112, 255, 134, 0.486); */
+  /* overflow: hidden; */
 }
 #olga img {
   width: 100%;
@@ -371,6 +389,7 @@ body {
   height: 100%;
   object-fit: cover;
 }
+
 .container_heading {
   width: 20vw;
   height: 7vh;
@@ -378,6 +397,12 @@ body {
   font-family: pl;
   text-transform: uppercase;
   margin-bottom: 3.8vw;
+}
+/* hover effect  color fade little-bit*/
+.container_heading:hover {
+  -webkit-text-stroke: 0.01px rgba(216, 216, 216, 0.92);
+  color: transparent;
+  transition: color 0.3s ease-in-out;
 }
 .container_text {
   margin: 1.7vw 0 0 0;
@@ -394,13 +419,48 @@ body {
   width: 24.4vw;
   height: 24.4vw;
   position: relative;
-  left: 84%;
-  border: white solid 1px;
+  left: 71%;
+  border: 1px solid white;
   border-radius: 50%;
-  bottom: 12.5vh;
   transform: translateX(-50%);
+  bottom: 14vh;
   cursor: pointer;
 }
+
+/* White circle background */
+.white_circle {
+  width: 100%;
+  height: 100%;
+  background-color: white;
+  /* color: black; */
+  border-radius: 50%;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 999;
+  /* top: 0;
+  left: 0; */
+}
+
+/* Text inside the circle */
+.circle-text {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) scale(0.9);
+  font-size: 1.1vw;
+  color: rgb(0, 0, 0);
+  font-family: pl;
+  opacity: 0;
+  font-weight: 600;
+  transition: opacity 0.4s ease-out, transform 0.4s ease-out;
+  pointer-events: none;
+  letter-spacing: 0.05em;
+  width: 80%; /* Optional: wrap long lines inside circle */
+}
+
+/* Arrow icon styling */
 #down_arrow svg {
   width: 8vw;
   height: 8vw;
@@ -408,6 +468,7 @@ body {
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
+  z-index: 3;
 }
 
 #page4 {
@@ -430,10 +491,10 @@ body {
   width: 24.4vw;
   height: 24.4vw;
   position: relative;
-  left: 8.4%;
+  left: -4%;
   border: white solid 1px;
   border-radius: 50%;
-  bottom: 12.5vh;
+  bottom: 25vh;
   transform: translateX(-50%);
   cursor: pointer;
 }
@@ -514,12 +575,12 @@ body {
   width: 24.2vw;
   height: 24.2vw;
   position: relative;
-  left: 16%;
+  left: 4%;
   border: white solid 1px;
   border-radius: 50%;
   transform: translateX(-50%);
   cursor: pointer;
-  top: 27%;
+  top: 30%;
 }
 #right_arrow svg {
   width: 8vw;
@@ -599,12 +660,18 @@ body {
   background-color: #ffa63d;
   border-radius: 50%;
   cursor: pointer;
+  transition: width 0.4s ease, height 0.4s ease;
 }
 #all_projects h5 {
   font-size: 1.2vw;
   font-family: pl;
   font-weight: 500;
 }
+#all_projects:hover {
+  width: 24.5vw;
+  height: 24.5vw;
+}
+
 #page8 {
   width: 100%;
   height: 100vh;
@@ -621,8 +688,18 @@ body {
   font-size: 8vw;
   font-family: pl;
   text-transform: uppercase;
-  border-bottom: 1px solid;
+  position: relative;
+  /* border-bottom: 1px solid; */
   padding-bottom: 6.5vw;
+  overflow: hidden;
+}
+.about-underline {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 2px;
+  background-color: white;
 }
 #count03 {
   font-family: "silk serif lgt";
@@ -707,7 +784,16 @@ body {
   font-size: 1vw;
   font-family: pl;
   right: 2%;
-  border-top: 1px solid;
+  overflow: hidden;
+}
+
+.page9-underline {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 0.6px;
+  background-color: white;
 }
 #page10 {
   width: 100%;
@@ -788,18 +874,30 @@ body {
   position: relative;
 }
 #page11_headline {
-  width: 66%;
-  height: 20vh;
+  width: 67.5%;
+  height: 11vh;
   display: flex;
   align-items: center;
-  margin: 0vh 0 0 29vw;
-  padding-top: 5vw;
+  margin: 0vw 0vw 0vw 29vw;
+  text-transform: uppercase;
+  position: relative;
+  padding: 5vw 0 6.5vw 0;
+  font-weight: 500;
   font-size: 8vw;
   font-family: pl;
-  text-transform: uppercase;
-  border-bottom: 1px solid;
-  padding-bottom: 6.5vw;
+  right: 2%;
+  overflow: hidden;
 }
+.page11-underline {
+  position: absolute;
+  z-index: 999;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 1.5px;
+  background-color: white;
+}
+
 #page11_right_arrow {
   width: 0vw;
   height: 0vw;
@@ -830,7 +928,6 @@ body {
   width: 65%;
   height: 50vh;
   position: relative;
-  /* background-color: red; */
   display: flex;
   left: 29.1%;
   top: 8%;
@@ -839,24 +936,43 @@ body {
   line-height: 3vw;
   color: white;
 }
+
+#part1,
+#part2,
+#part3 {
+  height: 100%;
+  position: relative;
+}
+
 #part1 {
   width: 35%;
-  height: 100%;
-  /* background-color: #ffe28156; */
-  position: relative;
 }
 #part2 {
   width: 35%;
-  height: 100%;
-  /* background-color: #ffa0843f; */
-  position: relative;
 }
 #part3 {
   width: 30%;
-  height: 100%;
-  /* background-color: #9597ff48; */
-  position: relative;
 }
+
+.social-item {
+  position: relative;
+  overflow: hidden;
+  height: 3vw;
+  cursor: pointer;
+}
+
+.social-item .text,
+.social-item .text-copy {
+  position: absolute;
+  left: 0;
+  top: 0;
+  will-change: transform;
+}
+
+.social-item .text-copy {
+  transform: translateY(100%);
+}
+
 #part1,
 #part2,
 #part3,
@@ -887,5 +1003,14 @@ h5 {
   font-weight: 500;
   font-size: 1.3vw;
   font-family: pl;
-  border-top: 1px solid;
+  /* border-top: 1px solid; */
+  overflow: hidden;
+}
+.page11-lastline {
+  position: absolute;
+  bottom: 99%;
+  left: 0;
+  width: 100%;
+  height: 1px;
+  background-color: white;
 }
