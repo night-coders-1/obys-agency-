@@ -150,6 +150,7 @@
           </div>
           <div class="text_01_line">
             <h4>
+              <img src="assets/asset 0.jpeg" id="flag" alt="" />
               <span id="web">Web</span>
               <span>/</span>
               <span id="graphic">Graphic</span>
@@ -159,11 +160,13 @@
             <h4>Experience</h4>
           </div>
         </div>
+        <img src="assets/asset 0.jpeg" id="flag" alt="" />
       </div>
 
       <div id="page2" data-scroll data-scroll-speed="-1.6">
         <div id="vid-container">
           <div id="play_pause">
+            <!-- Play Icon -->
             <svg
               class="button__play-icon"
               width="20"
@@ -171,18 +174,34 @@
               viewBox="0 0 20 24"
               fill="none"
               xmlns="http://www.w3.org/2000/svg"
-              style="visibility: inherit; opacity: 1"
+              style="visibility: visible; opacity: 1"
             >
               <path
                 d="M20 12L2.43406e-07 24L-7.15256e-07 -8.74228e-07L20 12Z"
                 fill="white"
               ></path>
             </svg>
+
+            <!-- Pause Icon (Initially Hidden) -->
+            <svg
+              class="button__pause-icon"
+              width="20"
+              height="24"
+              viewBox="0 0 20 24"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+              style="visibility: hidden; opacity: 0"
+            >
+              <path d="M0 24V0H7.36842V24H0Z" fill="white"></path>
+              <path d="M12.6316 24V0H20V24H12.6316Z" fill="white"></path>
+            </svg>
           </div>
+
           <img
             src="https://obys.agency/wp-content/uploads/2022/11/Showreel-2022-preview-1.jpg"
             alt=""
           />
+
           <video
             autoplay
             muted

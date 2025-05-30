@@ -297,3 +297,107 @@ links.forEach((link) => {
     });
   });
 });
+
+//todo vid crsr animation
+
+const play_pause = document.querySelector("#play_pause");
+const vid_container = document.querySelector("#vid-container");
+const video = vid_container.querySelector("video");
+const image = vid_container.querySelector("img");
+
+// SVG icons
+const playIcon = play_pause.querySelector(".button__play-icon");
+const pauseIcon = play_pause.querySelector(".button__pause-icon");
+
+let isPlaying = true; // autoplay is ON initially
+
+// Hover effect (only when paused)
+play_pause.addEventListener("mouseenter", () => {
+  if (!isPlaying) {
+    gsap.to(play_pause, {
+      scale: 0.88,
+      duration: 0.4,
+      ease: "power2.out",
+    });
+  }
+});
+
+play_pause.addEventListener("mouseleave", () => {
+  if (!isPlaying) {
+    gsap.to(play_pause, {
+      scale: 1,
+      duration: 0.4,
+      ease: "power2.inOut",
+    });
+  }
+});
+
+// Click to toggle play/pause
+play_pause.addEventListener("click", () => {
+  if (!isPlaying) {
+    // ▶️ → ⏸️ Play video
+    gsap.to(image, {
+      opacity: 0,
+      duration: 0.5,
+      ease: "power2.inOut",
+    });
+
+    video.play();
+
+    gsap.to(play_pause, {
+      scale: 0.8,
+      duration: 0.4,
+      ease: "power2.out",
+    });
+
+    // Play → Pause icon
+    gsap.to(playIcon, { opacity: 0, visibility: "hidden", duration: 0.2 });
+    gsap.to(pauseIcon, { opacity: 1, visibility: "visible", duration: 0.2 });
+  } else {
+    // ⏸️ → ▶️ Pause video
+    gsap.to(image, {
+      opacity: 1,
+      duration: 0.5,
+      ease: "power2.inOut",
+    });
+
+    video.pause();
+
+    gsap.to(play_pause, {
+      scale: 1,
+      duration: 0.4,
+      ease: "power2.out",
+    });
+
+    // Pause → Play icon
+    gsap.to(pauseIcon, { opacity: 0, visibility: "hidden", duration: 0.2 });
+    gsap.to(playIcon, { opacity: 1, visibility: "visible", duration: 0.2 });
+  }
+
+  isPlaying = !isPlaying;
+});
+
+//todo flag animation
+
+document.addEventListener("mousemove", (dets) => {
+  gsap.to("#flag", { x: dets.x, y: dets.y, duration: 0.2, ease: "power2.out" });
+});
+
+document.querySelectorAll("#web, #graphic").forEach((elem) => {
+  elem.addEventListener("mouseenter", () => {
+    gsap.to("#flag", {
+      display: "block",
+      opacity: 1,
+      duration: 0.3,
+      ease: "power2.out",
+    });
+  });
+  elem.addEventListener("mouseleave", () => {
+    gsap.to("#flag", {
+      display: "none",
+      opacity: 0,
+      duration: 0.3,
+      ease: "power2.out",
+    });
+  });
+});
