@@ -1354,3 +1354,836 @@ h5 {
   height: 1px;
   background-color: white;
 }
+
+/* idea for responsiveness */
+
+@media (max-width: 600px) {
+  /* Prevent horizontal scroll on mobile */
+  html,
+  body,
+  #main-content,
+  #page1,
+  #page2,
+  #page3,
+  #page4,
+  #page5,
+  #page6,
+  #page7,
+  #page8,
+  #page9,
+  #page10,
+  #page11 {
+    max-width: 100vw;
+    overflow-x: hidden;
+    position: relative;
+  }
+
+  /* ===== BASE MOBILE ADJUSTMENTS ===== */
+  html,
+  body {
+    cursor: auto;
+    overflow-x: hidden;
+    overflow-y: auto; /* Enable vertical scrolling */
+    height: auto; /* Allow content to determine height */
+  }
+
+  #main-content {
+    overflow-y: auto; /* Enable scrolling for main content */
+    height: auto; /* Allow content to determine height */
+  }
+  #page8 {
+    overflow-y: hidden !important;
+  }
+  #page9 {
+    overflow-y: hidden !important;
+  }
+
+  /* Remove fixed height constraints */
+  #page1 {
+    height: 50vh;
+    overflow-y: hidden !important;
+  }
+  #page2 {
+    height: 65vh;
+  }
+  #page3,
+  #page4,
+  #page5,
+  #page11 {
+    min-height: 100vh; /* Use min-height instead of fixed height */
+    height: auto;
+  }
+  #page10 {
+    /* height: 100vh; */
+    margin-top: 8vh;
+    margin-bottom: 16vh;
+    height: auto;
+  }
+  #page10 .scroll-text {
+    font-size: 10vw !important;
+    height: 6.7vh !important;
+  }
+
+  #page9 {
+    height: 180vh;
+    position: relative;
+  }
+
+  #page8 {
+    margin-top: 5vh;
+    height: 58vh;
+    padding-bottom: 0vh !important;
+  }
+
+  #page7 {
+    height: 38vh;
+  }
+
+  /* ===== LOADER SECTION ===== */
+  #loader {
+    position: fixed;
+    z-index: 9999;
+  }
+
+  #crsr {
+    display: none;
+  }
+
+  /* Loader adjustments */
+  #loader {
+    padding: 35vh 4vw 0 4vw; /* Match original mobile padding */
+    justify-content: flex-start;
+    align-items: flex-start;
+  }
+
+  .numbers {
+    font-size: 4.5vw;
+    padding-left: 3vw; /* Match original mobile padding */
+  }
+
+  .main-text {
+    font-size: 9vw;
+    line-height: 1.1;
+  }
+
+  #line1 {
+    width: 55%;
+    justify-content: space-around;
+  }
+
+  #line1 h1 {
+    padding-right: 0; /* Remove padding on mobile */
+  }
+
+  #wait-message {
+    font-size: 3vw;
+    left: 4vw; /* Align with other mobile content */
+    width: 92%;
+    position: relative; /* Match other mobile content width */
+    top: 3%;
+    max-width: none;
+  }
+
+  /* ===== NAVIGATION SECTION ===== */
+  #mainnav {
+    height: 12vh;
+    padding: 0 4vw;
+  }
+
+  #obyslogo {
+    width: 100%;
+    height: 10.2vh;
+    padding: 20px 0;
+    display: flex;
+    justify-content: space-between;
+    margin-right: 5px;
+  }
+
+  #obyslogo .brand__svg {
+    width: 60px;
+    height: 27px;
+  }
+
+  #obyslogo .menu-opener__square {
+    /* padding: 1vh 0 0 0vw; */
+    width: 7.6%;
+  }
+
+  #nav {
+    width: 55%;
+    height: 12vw;
+    display: none;
+  }
+
+  /* ===== PAGE 1 - HERO SECTION ===== */
+  #text_01 {
+    width: 80%;
+    font-size: 9vw;
+    line-height: 9.3vw;
+    margin: 26vw 0 0 5vw;
+  }
+  #web {
+    border-bottom: 4px solid white;
+  }
+  #graphic {
+    border-bottom: 4px solid white;
+  }
+
+  #count01 {
+    font-size: 4.5vw;
+    padding: 18vw 0 0 5vw;
+  }
+
+  /* ===== PAGE 2 - VIDEO SECTION ===== */
+  #vid-container {
+    width: 100%;
+    height: 45vh;
+    left: 0%;
+    top: 23%;
+    margin-bottom: 0; /* Ensure no extra margin */
+  }
+
+  #play_pause {
+    width: 12vw;
+    height: 12vw;
+    top: -7%;
+    left: 70%;
+  }
+
+  #play_pause svg {
+    width: 5vw;
+    height: 5vh;
+  }
+
+  /* Remove navigation circles */
+  #down_arrow,
+  #rightdown_arrow,
+  #right_arrow,
+  .white_circle {
+    display: none;
+  }
+
+  /* ===== PAGE 3 - FIRST PROJECTS SECTION ===== */
+  #page3_headline {
+    width: 92%;
+    font-size: 11vw;
+    margin: 4vh 0 0 4vw; /* Reduced from default to 4vh */
+    padding-top: 4vh; /* Reduced from 8vw to 4vh */
+  }
+
+  #page3_container {
+    width: 92%;
+    flex-direction: column;
+    gap: 25vh; /* Increased from 15vh to 25vh */
+    margin: 12vh 0 0 4vw; /* Increased from 8vh to 12vh */
+    align-items: flex-start;
+  }
+
+  #count02 {
+    font-size: 5vw;
+    padding: 0 0 0 5vw;
+  }
+
+  #olga,
+  #aim {
+    width: 100%;
+    height: 60vh;
+    position: relative;
+    margin: 0;
+    transform: none;
+  }
+
+  #olga {
+    margin-bottom: 4vh !important;
+  }
+
+  #aim {
+    margin-top: 0;
+    z-index: 1;
+  }
+
+  .container_heading {
+    width: 100%;
+    font-size: 5.5vw;
+    margin-bottom: 4vh !important;
+    height: auto;
+  }
+
+  .container_text {
+    margin: 3vh 0 0 0 !important;
+    width: 100% !important;
+    height: auto !important;
+    font-size: 3.8vw !important;
+    display: flex !important;
+    justify-content: space-between !important;
+    font-family: pl !important;
+    border-bottom: 1px solid !important;
+    line-height: 5vw !important;
+    padding-bottom: 3vh !important;
+  }
+
+  /* ===== PAGE 4 - SECOND PROJECTS SECTION ===== */
+  #container_page4 {
+    width: 92%;
+    flex-direction: column;
+    gap: 25vh; /* Increased from 15vh to 25vh */
+    margin: 56vh 0 0 4vw !important; /* Increased from 15vh to 25vh */
+    align-items: flex-start;
+  }
+
+  #ochi,
+  #david {
+    width: 100%;
+    height: 52vh;
+    position: relative;
+    margin-top: 2vh !important;
+    transform: none;
+    left: 0;
+    right: 0;
+  }
+
+  .ochi_text,
+  .david_text,
+  .eminente_text,
+  .makhno_text {
+    margin: -3vh 0 0 0 !important;
+    width: 100% !important;
+    height: auto !important;
+    font-size: 3.8vw !important;
+    display: flex !important;
+    justify-content: space-between !important;
+    font-family: pl !important;
+    border-bottom: 1px solid !important;
+    line-height: 5vw !important;
+    padding-bottom: 3vh !important;
+  }
+
+  /* ===== PAGE 5 - THIRD PROJECTS SECTION ===== */
+  #container_page5 {
+    width: 92%;
+    flex-direction: column;
+    gap: 25vh; /* Increased from 15vh to 25vh */
+    margin: 25vh 0 0 4vw; /* Increased from 15vh to 25vh */
+    align-items: flex-start;
+  }
+
+  #eminente,
+  #makhno {
+    width: 100%;
+    height: 52vh;
+    position: relative;
+    margin: 0;
+    transform: none;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+  }
+
+  /* ===== PAGE 7 - ALL PROJECTS SECTION ===== */
+  #all_projects {
+    height: 24vh;
+    width: 42vw;
+  }
+
+  #all_projects h5 {
+    font-size: 4.1vw !important;
+  }
+
+  /* ===== PAGE 8 - ABOUT SECTION ===== */
+  #page8_headline {
+    width: 92%;
+    font-size: 10vw;
+    margin: 0 0 0 4vw;
+    padding-top: 8vw;
+    height: auto;
+    transform: none !important;
+    position: relative;
+  }
+
+  #page8_headline h1 {
+    margin-bottom: 3vw;
+    transform: none !important;
+  }
+
+  .about-underline {
+    width: 100% !important;
+    position: absolute;
+    z-index: 99 !important;
+    height: 2px !important;
+    background-color: white !important;
+    margin: 24vw 0 0vw 0 !important;
+    transform: none !important;
+    left: 0 !important;
+    right: 0 !important;
+    bottom: auto !important;
+    top: auto !important;
+    display: block !important;
+  }
+
+  #count03 {
+    font-size: 4.5vw;
+    padding: 0vw 0 0 5vw;
+  }
+
+  #page8_text {
+    height: 33vh;
+    width: 92%;
+    font-size: 6vw;
+    line-height: 6.6vw;
+    z-index: 9 !important;
+    left: 4%;
+    top: 10%;
+    position: relative;
+  }
+
+  /* ===== PAGE 9 - AWARDS SECTION ===== */
+  #page9_line {
+    width: 92%;
+    margin: 0 auto !important;
+    font-size: 4vw !important;
+    height: auto !important;
+    position: relative;
+    padding: 4vh 0;
+    left: 0vw;
+    bottom: 10vh;
+    overflow: hidden;
+  }
+
+  .page9-underline {
+    width: 100%;
+    height: 1px !important;
+    background-color: white !important;
+    transform: none !important;
+    margin-top: 4vh;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+  }
+
+  #page9_container {
+    width: 92%;
+    height: auto;
+    flex-direction: column;
+    margin: 8vh auto;
+    align-items: center;
+    position: relative;
+    left: 0;
+    padding: 0;
+  }
+
+  #page9_img {
+    width: 100%;
+    height: 52vh; /* Match card height */
+    margin: 0 auto;
+  }
+
+  #page9_img2 {
+    width: 92%;
+    height: 52vh; /* Match card height */
+    position: relative;
+    left: 0;
+    margin: 25vh 0 0 4vw;
+  }
+  #page9_img2 img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: 40%;
+  }
+
+  #img_text {
+    width: 92%;
+    position: relative;
+    text-align: left !important;
+    left: 0;
+    padding: 8vh 0 0vh 0;
+    font-size: 3.8vw;
+    margin: 0 auto;
+  }
+
+  #img_text p {
+    margin-bottom: 4vw;
+    width: 100%;
+  }
+
+  /* ===== PAGE 10 - SCROLLING TEXT SECTION ===== */
+  .scroll-text {
+    font-size: 9vw;
+  }
+
+  /* ===== PAGE 11 - CONTACT SECTION ===== */
+  #page11_headline {
+    width: 92%;
+    font-size: 11vw;
+    font-weight: 600;
+    margin: 5vh 0 0 4vw;
+    padding: 2vw 0 8vw 0;
+    right: 0;
+    overflow: visible;
+  }
+
+  #connect_us {
+    height: 99%;
+    width: 92%;
+    flex-direction: column;
+    left: 4%;
+    top: 4%;
+    font-size: 4.5vw;
+    line-height: 5.5vw;
+    margin-bottom: 0vh;
+  }
+  #count04 {
+    font-size: 4.5vw;
+    padding: 0vw 0 0 5vw;
+    font-family: silk serif reg;
+  }
+
+  #part1 {
+    width: 100%;
+    height: 22vh;
+    margin-bottom: 6vw;
+    margin-top: 3vw;
+  }
+  #part2 {
+    width: 100%;
+    height: 22vh;
+    margin: 10vh 0 0vw 0;
+  }
+  #part3 {
+    width: 100%;
+    height: 10vh;
+    margin-bottom: 6vw;
+  }
+
+  .social-item {
+    height: 5vw;
+    margin-bottom: 4vw;
+  }
+
+  #part1 h6 {
+    font-size: 4.1vw;
+    margin: 2vh 0 8vw 0;
+  }
+  #part2 h6 {
+    font-size: 4.1vw;
+    margin: 0vh 0 8vw 0;
+  }
+  #part3 h6 {
+    font-size: 4.1vw;
+    margin-bottom: 8vw;
+  }
+  #part2 h5 {
+    height: 3.5vh !important;
+    font-size: 6vw;
+    line-height: 3.8vh;
+    height: auto;
+  }
+  #part1 h5,
+  #part3 h5 {
+    height: 3.5vh !important;
+    font-size: 6vw;
+    line-height: 4.5vw;
+    height: auto;
+  }
+
+  #page11_bottomline {
+    width: 92%;
+    font-size: 3.8vw;
+    margin: 0vh 0 0 4vw;
+    padding-top: 2vw;
+    overflow: visible;
+  }
+
+  .page11-underline {
+    height: 1px;
+    opacity: 1;
+    transform: none !important;
+  }
+
+  .page11-lastline {
+    height: 1px;
+    opacity: 1;
+    transform: none !important;
+  }
+  #page11_bottomline h5 {
+    font-size: 4.1vw;
+    margin: 0vh 0 8vw 0;
+  }
+
+  /* ===== COMMON MOBILE STYLES ===== */
+  /* Adjust spacing for mobile */
+  #page2,
+  #page3,
+  #page4,
+  #page5,
+  #page7,
+  #page8,
+  #page9,
+  #page10,
+  #page11 {
+    padding: 0 0 0vw 0;
+  }
+
+  /* Make all images responsive */
+  img {
+    max-width: 100%;
+    height: auto;
+    object-fit: cover;
+  }
+
+  /* Adjust video container */
+  #vid-container video,
+  #vid-container img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  /* Remove hover effects on mobile */
+  .container_heading:hover,
+  #web:hover,
+  #graphic:hover {
+    -webkit-text-stroke: none;
+    color: white;
+  }
+
+  /* Projects section - Second set (Ochi and David) */
+  #container_page4 {
+    width: 92%;
+    flex-direction: column;
+    gap: 25vh; /* Increased from 15vh to 25vh */
+    margin: 56vh 0 0 4vw !important; /* Increased from 15vh to 25vh */
+    align-items: flex-start;
+  }
+
+  #ochi,
+  #david {
+    width: 100%;
+    height: 52vh;
+    position: relative;
+    margin-top: 2vh !important;
+    transform: none;
+    left: 0;
+    right: 0;
+  }
+
+  /* Projects section - Third set (Eminente and Makhno) */
+  #container_page5 {
+    width: 92%;
+    flex-direction: column;
+    gap: 25vh; /* Increased from 15vh to 25vh */
+    margin: 25vh 0 0 4vw; /* Increased from 15vh to 25vh */
+    align-items: flex-start;
+  }
+
+  #eminente,
+  #makhno {
+    width: 100%;
+    height: 52vh;
+    position: relative;
+    margin: 0;
+    transform: none;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+  }
+
+  /* Common styles for all project cards */
+  #olga,
+  #aim,
+  #ochi,
+  #david {
+    width: 100%;
+    height: 52vh;
+    position: relative;
+    margin: 0;
+    transform: none;
+  }
+
+  #eminente,
+  #makhno {
+    width: 100%;
+    height: 52vh;
+    position: relative;
+    margin: 2.4vh 0 0 0 !important;
+    transform: none;
+  }
+
+  /* Container spacing */
+  #page3,
+  #page4 {
+    min-height: auto;
+    padding: 25vh 0; /* Increased from 15vh to 25vh */
+    margin-top: 0; /* Remove top margin */
+    overflow: visible;
+  }
+
+  #page5 {
+    min-height: auto;
+    padding: 0vh 0 0vh 0 !important; /* Increased from 15vh to 25vh */
+    margin-top: 0 !important; /* Remove top margin */
+    overflow: visible;
+  }
+
+  /* Remove any extra spacing */
+  #page2 + #page3 {
+    margin-top: 0;
+    padding-top: 0;
+  }
+
+  /* Remove any conflicting styles */
+  #page3_container > *,
+  #container_page4 > *,
+  #container_page5 > * {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+  }
+
+  /* Add extra margin between sections */
+  #page3 {
+    margin-bottom: 10vh; /* Increased from 5vh to 10vh */
+  }
+
+  #page4 {
+    margin: 0vh 0 0 0 !important;
+    padding: 0vh 0 0vh 0 !important;
+  }
+
+  #page5 {
+    margin-top: 10vh; /* Increased from 5vh to 10vh */
+  }
+
+  /* Adjust text spacing */
+  .container_heading {
+    margin-bottom: 6vh; /* Increased from 4vh to 6vh */
+  }
+
+  .container_text {
+    margin-top: 6vh; /* Increased from 4vh to 6vh */
+    padding-bottom: 6vh; /* Increased from 4vh to 6vh */
+  }
+
+  .ochi_text,
+  .david_text,
+  .eminente_text,
+  .makhno_text {
+    padding: 6vh 0; /* Increased from 4vh to 6vh */
+    margin-top: 6vh; /* Increased from 4vh to 6vh */
+  }
+
+  /* Adjust page spacing */
+  #page2 {
+    height: 65vh;
+    padding-bottom: 0; /* Remove bottom padding */
+    margin-bottom: 0; /* Remove bottom margin */
+  }
+
+  #page3 {
+    min-height: auto;
+    padding: 25vh 0; /* Increased from 15vh to 25vh */
+    margin-top: 0; /* Remove top margin */
+    overflow: visible;
+  }
+
+  /* Projects section - First set (Olga and Aim) */
+  #page3_container {
+    width: 92%;
+    flex-direction: column;
+    gap: 25vh; /* Increased from 15vh to 25vh */
+    margin: 12vh 0 0 4vw; /* Increased from 8vh to 12vh */
+    align-items: flex-start;
+  }
+
+  /* Projects section - Second set (Ochi and David) */
+  #container_page4 {
+    width: 92%;
+    flex-direction: column;
+    gap: 25vh; /* Increased from 15vh to 25vh */
+    margin: 25vh 0 0 4vw; /* Increased from 15vh to 25vh */
+    align-items: flex-start;
+  }
+
+  /* Projects section - Third set (Eminente and Makhno) */
+  #container_page5 {
+    width: 92%;
+    flex-direction: column;
+    gap: 25vh; /* Increased from 15vh to 25vh */
+    margin: 25vh 0 0 4vw; /* Increased from 15vh to 25vh */
+    align-items: flex-start;
+  }
+
+  /* Container spacing */
+
+  #page3,
+  #page4,
+  #page5 {
+    min-height: auto;
+    padding: 25vh 0; /* Increased from 15vh to 25vh */
+    overflow: visible;
+  }
+
+  /* Add extra margin between sections */
+  #page3 {
+    margin-bottom: 10vh; /* Increased from 5vh to 10vh */
+  }
+
+  #page4 {
+    margin: 10vh 0; /* Increased from 5vh to 10vh */
+  }
+
+  #page5 {
+    margin-top: 10vh; /* Increased from 5vh to 10vh */
+  }
+
+  /* Adjust text spacing */
+  .container_heading {
+    margin-bottom: 6vh; /* Increased from 4vh to 6vh */
+  }
+
+  .container_text {
+    margin-top: 6vh; /* Increased from 4vh to 6vh */
+    padding-bottom: 6vh; /* Increased from 4vh to 6vh */
+  }
+
+  .ochi_text,
+  .david_text,
+  .eminente_text,
+  .makhno_text {
+    padding: 6vh 0; /* Increased from 4vh to 6vh */
+    margin-top: 6vh; /* Increased from 4vh to 6vh */
+  }
+
+  /* Ensure proper spacing for individual cards */
+  #olga,
+  #aim,
+  #ochi,
+  #david {
+    margin-bottom: 10vh; /* Add bottom margin to each card */
+  }
+
+  /* Remove any overlapping */
+  #page3_container > *,
+  #container_page4 > *,
+  #container_page5 > * {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    position: relative; /* Ensure proper stacking */
+    z-index: 1; /* Prevent overlapping */
+  }
+
+  #page11_right_arrow {
+    width: 9vw;
+    height: 9vw;
+    top: 5.3vw;
+  }
+
+  #page11_right_arrow svg {
+    width: 100%;
+    height: 100%;
+    left: 4vw;
+  }
+}

@@ -1,45 +1,51 @@
 function scroll() {
   gsap.registerPlugin(ScrollTrigger);
 
-  // Using Locomotive Scroll from Locomotive https://github.com/locomotivemtl/locomotive-scroll
+  // Check if we're on mobile
+  const isMobile = window.innerWidth <= 600;
 
-  const locoScroll = new LocomotiveScroll({
-    el: document.querySelector("#main-content"),
-    smooth: true,
-  });
-  // each time Locomotive Scroll updates, tell ScrollTrigger to update too (sync positioning)
-  locoScroll.on("scroll", ScrollTrigger.update);
+  // Only initialize Locomotive Scroll on desktop
+  if (!isMobile) {
+    const locoScroll = new LocomotiveScroll({
+      el: document.querySelector("#main-content"),
+      smooth: true,
+      multiplier: 1,
+      lerp: 0.1,
+    });
 
-  // tell ScrollTrigger to use these proxy methods for the "#main-content" element since Locomotive Scroll is hijacking things
-  ScrollTrigger.scrollerProxy("#main-content", {
-    scrollTop(value) {
-      return arguments.length
-        ? locoScroll.scrollTo(value, 0, 0)
-        : locoScroll.scroll.instance.scroll.y;
-    }, // we don't have to define a scrollLeft because we're only scrolling vertically.
-    getBoundingClientRect() {
-      return {
-        top: 0,
-        left: 0,
-        width: window.innerWidth,
-        height: window.innerHeight,
-      };
-    },
-    // LocomotiveScroll handles things completely differently on mobile devices - it doesn't even transform the container at all! So to get the correct behavior and avoid jitters, we should pin things with position: fixed on mobile. We sense it by checking to see if there's a transform applied to the container (the LocomotiveScroll-controlled element).
-    pinType: document.querySelector("#main-content").style.transform
-      ? "transform"
-      : "fixed",
-  });
+    locoScroll.on("scroll", ScrollTrigger.update);
 
-  // each time the window updates, we should refresh ScrollTrigger and then update LocomotiveScroll.
-  ScrollTrigger.addEventListener("refresh", () => locoScroll.update());
+    ScrollTrigger.scrollerProxy("#main-content", {
+      scrollTop(value) {
+        return arguments.length
+          ? locoScroll.scrollTo(value, 0, 0)
+          : locoScroll.scroll.instance.scroll.y;
+      },
+      getBoundingClientRect() {
+        return {
+          top: 0,
+          left: 0,
+          width: window.innerWidth,
+          height: window.innerHeight,
+        };
+      },
+      pinType: document.querySelector("#main-content").style.transform
+        ? "transform"
+        : "fixed",
+    });
 
-  // after everything is set up, refresh() ScrollTrigger and update LocomotiveScroll because padding may have been added for pinning, etc.
-  ScrollTrigger.refresh();
+    ScrollTrigger.addEventListener("refresh", () => locoScroll.update());
+    ScrollTrigger.refresh();
+  } else {
+    // On mobile, use native scrolling
+    ScrollTrigger.defaults({
+      scroller: window,
+    });
+    ScrollTrigger.refresh();
+  }
 }
-scroll();
 
-// todo loader page
+// Update loader function
 function loader() {
   // Animate loading text lines
   gsap.from(".main-text", {
@@ -62,7 +68,7 @@ function loader() {
       timerElement.textContent = count;
       count++;
     } else {
-      clearInterval(interval); // Stop the counter
+      clearInterval(interval);
     }
   }, 29);
 
@@ -73,8 +79,19 @@ function loader() {
       onComplete: () => {
         document.getElementById("loader").style.display = "none";
         document.getElementById("main-content").style.display = "block";
-        document.documentElement.style.overflow = "hidden"; // Allow scrolling after loader
-        document.body.style.overflow = "visible"; // Allow scrolling after loader
+
+        // Properly handle overflow after loader
+        const isMobile = window.innerWidth <= 600;
+        if (isMobile) {
+          document.documentElement.style.overflow = "auto";
+          document.body.style.overflow = "auto";
+        } else {
+          document.documentElement.style.overflow = "hidden";
+          document.body.style.overflow = "hidden";
+        }
+
+        // Refresh scroll trigger after loader is hidden
+        ScrollTrigger.refresh();
       },
     })
     .to("#loader *", {
@@ -83,17 +100,34 @@ function loader() {
       ease: "power2.out",
     })
     .to("#loader", {
-      y: "-100vh", // Slide the entire loader out of the viewport
+      y: "-100vh",
       duration: 1.2,
       ease: "power4.inOut",
     });
 
-  // Fade in wait message after animation
+  // Fade in wait message
   gsap.to("#wait-message", {
-    opacity: 1, // adjust timing based on when you want it to appear
+    opacity: 1,
     duration: 1,
   });
 }
+
+// Add resize handler to reinitialize scroll on window resize
+window.addEventListener("resize", () => {
+  const isMobile = window.innerWidth <= 600;
+  if (isMobile) {
+    // Reset scroll behavior for mobile
+    document.documentElement.style.overflow = "auto";
+    document.body.style.overflow = "auto";
+    ScrollTrigger.refresh();
+  } else {
+    // Reinitialize smooth scroll for desktop
+    scroll();
+  }
+});
+
+// Initialize
+scroll();
 loader();
 
 document.addEventListener("mousemove", function (dets) {
